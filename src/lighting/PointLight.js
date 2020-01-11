@@ -6,10 +6,10 @@
 
 import THREE from 'three';
 
-import Element from '../metal/Element';
+import Thing from '../metal/Thing';
 
 
-class PointLight extends Element {
+class PointLight extends Thing {
 
     constructor(color = 0xffffff, intensity = 1, distance = 0, decay = 1) {
         super();
