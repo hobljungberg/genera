@@ -1,18 +1,23 @@
 /**
  * Element
  *
- * A renderable Object.
+ * A renderable object.
  */
 
 import GeneraObject from './GeneraObject';
 
 
-class Element from GeneraObject {
+class Element extends GeneraObject {
 
     constructor(x = 0, y = 0, z = 0) {
         super();
 
         this.setPosition(x, y, z);
+        this.scenes = new Set();
+    }
+
+    addTo(scene) {
+        this.scenes.add(scene);
     }
 
     setPosition(x, y, z) {

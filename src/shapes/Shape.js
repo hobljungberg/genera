@@ -4,10 +4,10 @@
  * The base class from drawing meshes.
  */
 
-import Element from '../metal/Element';
+import Thing from '../metal/Thing';
 
 
-class Shape extends Element {
+class Shape extends Thing {
 
     constructor(x, y, z) {
         super(x, y, y);
@@ -17,12 +17,11 @@ class Shape extends Element {
     }
 
     addTo(scene) {
-        if (this.mesh === null)  {
+        if (this.thing === null)  {
             throw new Error("Shape can't be added to scene; it needs a mesh.");
         }
 
-        this.scene = scene;
-        this.scene.add(this.mesh);
+        super.addTo(scene);
     }
 
     setColor(color = 0x000000) {
@@ -30,16 +29,16 @@ class Shape extends Element {
     }
 
     setMesh(mesh = null) {
-        this.mesh = mesh;
+        this.thing = mesh;
     }
 
     setPosition(x = null, y = null, z = null) {
         super.setPosition(x, y, z);
 
-        if (this.mesh) {
-            this.mesh.position.x = this.x;
-            this.mesh.position.y = this.y;
-            this.mesh.position.z = this.z;
+        if (this.thing) {
+            this.thing.position.x = this.x;
+            this.thing.position.y = this.y;
+            this.thing.position.z = this.z;
         }
     }
 

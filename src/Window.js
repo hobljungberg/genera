@@ -1,13 +1,13 @@
 /**
  * Window
  *
- * The main artboard environment to
- * draw on.
+ * A drawing space.
  */
 
-import { PerspectiveCamera, PointLight, Scene, WebGLRenderer } from 'three';
+import { PerspectiveCamera, Scene, WebGLRenderer } from 'three';
 
 import GeneraObject from './metal/GeneraObject';
+import PointLight from './lighting/PointLight';
 
 
 class Window extends GeneraObject {
@@ -50,12 +50,12 @@ class Window extends GeneraObject {
     __init() {
         this._tick = 0;
 
-        this.Light.position.set(15, 15, -60);
-        this.Scene.add(this.Light);
+        this.Light.setPosition(15, 15, -60);
+        this.Light.addTo(this.Scene);
         this.Scene.add(this.Camera);
         this.Renderer.setSize(this.width, this.height);
 
-        this.Continaer.appendChild(this.Renderer.domElement);
+        this.Container.appendChild(this.Renderer.domElement);
     }
 
     __render() {
