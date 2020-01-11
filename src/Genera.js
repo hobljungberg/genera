@@ -11,6 +11,7 @@ import Window from './Window';
 import GeneraObject from './metal/GeneraObject';
 import Color from './metal/Color';
 import Element from './metal/Element';
+import Thing from './metal/Thing';
 
 // Shapes
 import Shape from './shapes/Shape';
@@ -40,6 +41,7 @@ const Genera = {
         GeneraObject,
         Color,
         Element,
+        Thing,
     },
 };
 
