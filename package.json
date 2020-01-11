@@ -1,0 +1,14 @@
+{
+  "name": "genera",
+  "version": "1.0.0",
+  "description": "Generative Art & Design Library",
+  "main": "src/Genera.js",
+  "repository": "https://github.com/hobljungberg/genera",
+  "author": "Hob Ljungberg <hob@hobljungberg.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "three": "^0.112.1",
+    "uuid": "^3.3.3"
+  }
+}
