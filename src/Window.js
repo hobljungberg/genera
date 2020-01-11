@@ -5,6 +5,8 @@
  * draw on.
  */
 
+import { PerspectiveCamera, PointLight, Scene, WebGLRenderer } from 'three';
+
 import GeneraObject from './metal/GeneraObject';
 
 

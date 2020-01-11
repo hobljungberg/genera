@@ -12,7 +12,6 @@ class Shape extends Element {
     constructor(x, y, z) {
         super(x, y, y);
 
-        this.setPosition(x, y, z);
         this.setColor();
         this.setMesh();
     }
@@ -35,9 +34,7 @@ class Shape extends Element {
     }
 
     setPosition(x = null, y = null, z = null) {
-        this.x = x || this.x;
-        this.y = y || this.y;
-        this.z = z || this.z;
+        super.setPosition(x, y, z);
 
         if (this.mesh) {
             this.mesh.position.x = this.x;
