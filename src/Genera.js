@@ -45,4 +45,8 @@ const Genera = {
     },
 };
 
+
+/*- Version inserted during build -*/
+{{VERSION}}
+
 export default Genera;

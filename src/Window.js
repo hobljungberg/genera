@@ -80,3 +80,6 @@ class Window extends GeneraObject {
     }
 
 }
+
+
+export default Window;

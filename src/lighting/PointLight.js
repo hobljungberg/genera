@@ -4,7 +4,7 @@
  * A point light Element.
  */
 
-import THREE from 'three';
+import * as THREE from 'three';
 
 import Thing from '../metal/Thing';
 

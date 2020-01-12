@@ -1,14 +1,17 @@
 {
   "name": "genera",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Generative Art & Design Library",
-  "main": "src/Genera.js",
+  "main": "dist/genera.js",
+  "module": "dist/genera.es.js",
+  "unpkg": "dist/genera.min.js",
   "repository": "https://github.com/hobljungberg/genera",
   "author": "Hob Ljungberg <hob@hobljungberg.com>",
   "license": "MIT",
   "private": false,
   "scripts": {
-      "start": "npx babel --watch src/Genera.js --out-file dist/genera.js"
+    "build": "npx rollup -c",
+    "start": "npx rollup -c -w"
   },
   "dependencies": {
     "three": "^0.112.1",
@@ -16,6 +19,14 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.8.0",
-    "@babel/core": "^7.8.0"
+    "@babel/core": "^7.8.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.4.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-terser": "^5.2.0"
   }
 }

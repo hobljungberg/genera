@@ -1,5 +1,3 @@
-'use strict';
-
 // Polyfills
 
 if ( Number.EPSILON === undefined ) {
@@ -49430,4 +49428,4 @@ const Genera = {
   }
 }
 
-module.exports = Genera;
+export default Genera;
