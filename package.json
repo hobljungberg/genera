@@ -7,8 +7,15 @@
   "author": "Hob Ljungberg <hob@hobljungberg.com>",
   "license": "MIT",
   "private": false,
+  "scripts": {
+      "start": "npx babel --watch src/Genera.js --out-file dist/genera.js"
+  },
   "dependencies": {
     "three": "^0.112.1",
     "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.0",
+    "@babel/core": "^7.8.0"
   }
 }
