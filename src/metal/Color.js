@@ -12,11 +12,15 @@ class Color extends GeneraObject {
     constructor(color = null) {
         super();
 
-        this._normalize(color)
+        this.value = color;
     }
 
-    _normalize(color) {
-        this.value = color || '#FFAA55';
+    get value() {
+        return this._color;
+    }
+
+    set value(supplied) {
+
     }
 
 }

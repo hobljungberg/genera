@@ -8,7 +8,6 @@
 
 import json from 'rollup-plugin-json';
 import babel from 'rollup-plugin-babel';
-import replace from 'rollup-plugin-replace';
 import { terser } from 'rollup-plugin-terser';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
@@ -18,14 +17,11 @@ import builtins from 'rollup-plugin-node-builtins';
 import pkg from './package.json';
 
 
-const pre = [
+const plugins = [
     resolve({ preferBuiltins: true }),
     commonjs(),
     globals(),
     builtins(),
-];
-
-const post = [
     babel({ exclude: 'node_modules/**' }),
     json(),
 ];
@@ -33,10 +29,7 @@ const post = [
 const build = {
     input: 'src/Genera.js',
     external: pkg.dependencies,
-    plugins: [
-        ...pre,
-        ...post,
-    ],
+    plugins,
 };
 
 
@@ -73,11 +66,7 @@ export default [
             sourcemap: true,
         },
         plugins: [
-            ...pre,
-            replace({
-                VERSION: `Genera.version = '${pkg.version}'`,
-            }),
-            ...post,
+            ...plugins,
             terser(),
         ]
     },

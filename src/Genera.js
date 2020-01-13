@@ -4,6 +4,8 @@
  * Library for creating generative media in WebGL.
  */
 
+import pkg from '../package';
+
 // Top Level
 import Window from './Window';
 
@@ -25,7 +27,9 @@ import Group from './utils/Group';
  * Namespaces
  */
 
-const Genera = {
+export default {
+    version: pkg.version,
+
     Window,
 
     Shapes: {
@@ -45,8 +49,4 @@ const Genera = {
     },
 };
 
-
-/*- Version inserted during build -*/
-{{VERSION}}
-
-export default Genera;
+export { Window };
