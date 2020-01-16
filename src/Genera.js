@@ -9,6 +9,10 @@ import pkg from '../package';
 // Top Level
 import Window from './Window';
 
+// Light
+import ColorSpectrum from './light/ColorSpectrum';
+import PointLight from './light/PointLight';
+
 // Metal
 import GeneraObject from './metal/GeneraObject';
 import Color from './metal/Color';
@@ -31,6 +35,11 @@ export default {
     version: pkg.version,
 
     Window,
+
+    Light: {
+        ColorSpectrum,
+        PointLight,
+    },
 
     Shapes: {
         Shape,

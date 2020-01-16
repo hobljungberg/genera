@@ -13,6 +13,7 @@
     "start": "npx parcel watch src/Genera.js"
   },
   "dependencies": {
+    "chroma-js": "^2.1.0",
     "three": "^0.112.1",
     "uuid": "^3.3.3"
   },

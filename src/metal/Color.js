@@ -4,15 +4,22 @@
  * A color component.
  */
 
+import chroma from 'chroma';
+
 import GeneraObject from './GeneraObject';
 
 
 class Color extends GeneraObject {
 
-    constructor(color = null) {
+    constructor(color = 0x000000) {
         super();
 
         this.value = color;
+    }
+
+    get rgba() {
+        const [ r, g, b, a ] = this._color.rgba();
+        return { r, g, b, a };
     }
 
     get value() {
@@ -20,7 +27,7 @@ class Color extends GeneraObject {
     }
 
     set value(supplied) {
-
+        this._color = chroma(supplied);
     }
 
 }
