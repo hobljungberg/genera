@@ -6,8 +6,9 @@
 
 import pkg from '../package';
 
-// Top Level
-import Window from './Window';
+// Spaces
+import PixelSpace from './PixelSpace';
+import ShapeSpace from './ShapeSpace';
 
 // Light
 import ColorSpectrum from './light/ColorSpectrum';
@@ -34,7 +35,8 @@ import Group from './utils/Group';
 export default {
     version: pkg.version,
 
-    Window,
+    PixelSpace,
+    ShapeSpace,
 
     Light: {
         ColorSpectrum,
@@ -57,5 +59,3 @@ export default {
         Thing,
     },
 };
-
-export { Window };

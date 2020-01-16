@@ -18,7 +18,14 @@ class ColorSpectrum extends GeneraObject {
     }
 
     color(decimal) {
-        console.log(decimal.toString(16));
+        const hex = Array.from(decimal.toString(16).padStart(6, '0'));
+
+        return Array.prototype.reduce.call(this.permutation, (
+            (permuted, chan) => {
+                console.log(permuted, chan);
+                return permuted.replace(chan, hex.shift())
+            }
+        ), "RRGGBB");
     }
 
     next() {
@@ -30,3 +37,6 @@ class ColorSpectrum extends GeneraObject {
     }
 
 }
+
+
+export default ColorSpectrum;

@@ -4,7 +4,7 @@
  * A color component.
  */
 
-import chroma from 'chroma';
+import chroma from 'chroma-js';
 
 import GeneraObject from './GeneraObject';
 
