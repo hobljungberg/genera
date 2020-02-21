@@ -12,10 +12,10 @@ class Collection extends GeneraObject {
     constructor(entries = []) {
         super();
 
-        this.entries = entries;
+        this.entries = Array.from(entries);
     }
 
-    combinations(min = 1) {
+    combine(min = 1) {
         const combine = function(a, min) {
             var fn = function(n, src, got, all) {
                 if (n == 0) {
@@ -45,6 +45,25 @@ class Collection extends GeneraObject {
         if (memSafe && this.entries.length >= 13) {
             throw new Error('too many entries to permute');
         }
+
+        function permute(arr) {
+            if (arr.length === 1) {
+                return [arr[0]];
+            }
+
+            const permutations = [];
+
+            arr.forEach((elem, i) => {
+                const disjoint = arr.slice(0, i).concat(arr.slice(i + 1, arr.length));
+                permute(disjoint).forEach(permutation => {
+                    permutations.push(elem.concat(permutation));
+                });
+            });
+
+            return permutations;
+        }
+
+        return Array.from(new Set(permute(this.entries)));
     }
 
 }

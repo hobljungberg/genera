@@ -7,8 +7,10 @@
 import pkg from '../package';
 
 // Spaces
-import PixelSpace from './PixelSpace';
-import ShapeSpace from './ShapeSpace';
+import PixelSpace from './spaces/PixelSpace';
+import ShapeSpace from './spaces/ShapeSpace';
+import CanvasSpace from './spaces/CanvasSpace';
+import ImageSpace from './spaces/ImageSpace';
 
 // Combinations
 import Collection from './combine/Collection';
@@ -36,8 +38,12 @@ import Circle from './shapes/Circle';
 export default {
     version: pkg.version,
 
-    PixelSpace,
-    ShapeSpace,
+    Spaces: {
+        CanvasSpace,
+        ImageSpace,
+        PixelSpace,
+        ShapeSpace,
+    },
 
     Light: {
         ColorSpectrum,

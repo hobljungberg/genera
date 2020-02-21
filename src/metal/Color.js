@@ -15,11 +15,25 @@ class Color extends GeneraObject {
         super();
 
         this.value = color;
+        this.__decoded = {};
     }
 
     get rgba() {
-        const [ r, g, b, a ] = this._color.rgba();
-        return { r, g, b, a };
+        if (!('rgba' in this.__decoded)) {
+            const [ r, g, b, a ] = this._color.rgba();
+            this.__decoded['rgba'] = { r, g, b, a };
+        }
+
+        return this.__decoded['rgba'];
+    }
+
+    get hsl() {
+        if (!('hsl' in this.__decoded)) {
+            const [ h, s, l ] = this._color.hsl();
+            this.__decoded['hsl'] = { h, s, l };
+        }
+
+        return this.__decoded['hsl'];
     }
 
     get value() {
