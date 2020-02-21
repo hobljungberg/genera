@@ -10,6 +10,10 @@ import pkg from '../package';
 import PixelSpace from './PixelSpace';
 import ShapeSpace from './ShapeSpace';
 
+// Combinations
+import Collection from './combine/Collection';
+import Group from './combine/Group';
+
 // Light
 import ColorSpectrum from './light/ColorSpectrum';
 import PointLight from './light/PointLight';
@@ -23,9 +27,6 @@ import Thing from './metal/Thing';
 // Shapes
 import Shape from './shapes/Shape';
 import Circle from './shapes/Circle';
-
-// Utils
-import Group from './utils/Group';
 
 
 /**
@@ -48,7 +49,8 @@ export default {
         Circle,
     },
 
-    Utils: {
+    Combinations: {
+        Collection,
         Group,
     },
 

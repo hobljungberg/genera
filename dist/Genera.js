@@ -133,7 +133,6 @@ module.exports = {
     "start": "npx parcel watch src/Genera.js"
   },
   "dependencies": {
-    "chroma": "^0.0.1",
     "chroma-js": "^2.1.0",
     "three": "^0.112.1",
     "uuid": "^3.3.3"
@@ -39249,7 +39248,156 @@ function (_ElementSpace) {
 
 var _default = ShapeSpace;
 exports.default = _default;
-},{"three":"../node_modules/three/build/three.module.js","./metal/ElementSpace":"metal/ElementSpace.js","./light/PointLight":"light/PointLight.js"}],"light/ColorSpectrum.js":[function(require,module,exports) {
+},{"three":"../node_modules/three/build/three.module.js","./metal/ElementSpace":"metal/ElementSpace.js","./light/PointLight":"light/PointLight.js"}],"combine/Collection.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _GeneraObject2 = _interopRequireDefault(require("../metal/GeneraObject"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var Collection =
+/*#__PURE__*/
+function (_GeneraObject) {
+  _inherits(Collection, _GeneraObject);
+
+  function Collection() {
+    var _this;
+
+    var entries = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+    _classCallCheck(this, Collection);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Collection).call(this));
+    _this.entries = entries;
+    return _this;
+  }
+
+  _createClass(Collection, [{
+    key: "combinations",
+    value: function combinations() {
+      var min = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
+      var combine = function combine(a, min) {
+        var fn = function fn(n, src, got, all) {
+          if (n == 0) {
+            if (got.length > 0) {
+              all[all.length] = got;
+            }
+
+            return;
+          }
+
+          for (var j = 0; j < src.length; j++) {
+            fn(n - 1, src.slice(j + 1), got.concat([src[j]]), all);
+          }
+
+          return;
+        };
+
+        var all = [];
+
+        for (var i = min; i < a.length; i++) {
+          fn(i, a, [], all);
+        }
+
+        all.push(a);
+        return all;
+      };
+
+      return combine(this.entries, min);
+    }
+  }, {
+    key: "permute",
+    value: function permute() {
+      var memSafe = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+
+      // 13! = 6,227,020,800
+      if (memSafe && this.entries.length >= 13) {
+        throw new Error('too many entries to permute');
+      }
+    }
+  }]);
+
+  return Collection;
+}(_GeneraObject2.default);
+
+var _default = Collection;
+exports.default = _default;
+},{"../metal/GeneraObject":"metal/GeneraObject.js"}],"combine/Group.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Element2 = _interopRequireDefault(require("../metal/Element"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var Group =
+/*#__PURE__*/
+function (_Element) {
+  _inherits(Group, _Element);
+
+  function Group() {
+    var _this;
+
+    var elements = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var x = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    var y = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+    var z = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+
+    _classCallCheck(this, Group);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Group).call(this, x, y, z));
+    _this.Elements = elements;
+    return _this;
+  }
+
+  return Group;
+}(_Element2.default);
+
+var _default = Group;
+exports.default = _default;
+},{"../metal/Element":"metal/Element.js"}],"light/ColorSpectrum.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39295,26 +39443,35 @@ function (_GeneraObject) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ColorSpectrum).call(this));
     _this.decimal = startPosition;
     _this.permutation = permutation;
+    _this.length = Math.pow(16, 6);
     return _this;
   }
 
   _createClass(ColorSpectrum, [{
     key: "color",
     value: function color(decimal) {
+      this.decimal = decimal;
       var hex = Array.from(decimal.toString(16).padStart(6, '0'));
       return Array.prototype.reduce.call(this.permutation, function (permuted, chan) {
-        console.log(permuted, chan);
         return permuted.replace(chan, hex.shift());
       }, "RRGGBB");
     }
   }, {
     key: "next",
     value: function next() {
+      if (this.decimal === this.length) {
+        this.decimal = -1;
+      }
+
       return this.color(++this.decimal);
     }
   }, {
     key: "previous",
     value: function previous() {
+      if (this.decimal === 0) {
+        this.decimal = this.length + 1;
+      }
+
       return this.color(--this.decimal);
     }
   }]);
@@ -39483,58 +39640,7 @@ function (_Shape) {
 
 var _default = Circle;
 exports.default = _default;
-},{"three":"../node_modules/three/build/three.module.js","./Shape":"shapes/Shape.js"}],"utils/Group.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _Element2 = _interopRequireDefault(require("../metal/Element"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var Group =
-/*#__PURE__*/
-function (_Element) {
-  _inherits(Group, _Element);
-
-  function Group() {
-    var _this;
-
-    var elements = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    var x = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-    var y = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-    var z = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
-
-    _classCallCheck(this, Group);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Group).call(this, x, y, z));
-    _this.Elements = elements;
-    return _this;
-  }
-
-  return Group;
-}(_Element2.default);
-
-var _default = Group;
-exports.default = _default;
-},{"../metal/Element":"metal/Element.js"}],"Genera.js":[function(require,module,exports) {
+},{"three":"../node_modules/three/build/three.module.js","./Shape":"shapes/Shape.js"}],"Genera.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39547,6 +39653,10 @@ var _package = _interopRequireDefault(require("../package"));
 var _PixelSpace = _interopRequireDefault(require("./PixelSpace"));
 
 var _ShapeSpace = _interopRequireDefault(require("./ShapeSpace"));
+
+var _Collection = _interopRequireDefault(require("./combine/Collection"));
+
+var _Group = _interopRequireDefault(require("./combine/Group"));
 
 var _ColorSpectrum = _interopRequireDefault(require("./light/ColorSpectrum"));
 
@@ -39564,8 +39674,6 @@ var _Shape = _interopRequireDefault(require("./shapes/Shape"));
 
 var _Circle = _interopRequireDefault(require("./shapes/Circle"));
 
-var _Group = _interopRequireDefault(require("./utils/Group"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -39574,10 +39682,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Library for creating generative media in WebGL.
  */
 // Spaces
+// Combinations
 // Light
 // Metal
 // Shapes
-// Utils
 
 /**
  * Namespaces
@@ -39594,7 +39702,8 @@ var _default = {
     Shape: _Shape.default,
     Circle: _Circle.default
   },
-  Utils: {
+  Combinations: {
+    Collection: _Collection.default,
     Group: _Group.default
   },
   _metal: {
@@ -39605,7 +39714,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"../package":"../package.json","./PixelSpace":"PixelSpace.js","./ShapeSpace":"ShapeSpace.js","./light/ColorSpectrum":"light/ColorSpectrum.js","./light/PointLight":"light/PointLight.js","./metal/GeneraObject":"metal/GeneraObject.js","./metal/Color":"metal/Color.js","./metal/Element":"metal/Element.js","./metal/Thing":"metal/Thing.js","./shapes/Shape":"shapes/Shape.js","./shapes/Circle":"shapes/Circle.js","./utils/Group":"utils/Group.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"../package":"../package.json","./PixelSpace":"PixelSpace.js","./ShapeSpace":"ShapeSpace.js","./combine/Collection":"combine/Collection.js","./combine/Group":"combine/Group.js","./light/ColorSpectrum":"light/ColorSpectrum.js","./light/PointLight":"light/PointLight.js","./metal/GeneraObject":"metal/GeneraObject.js","./metal/Color":"metal/Color.js","./metal/Element":"metal/Element.js","./metal/Thing":"metal/Thing.js","./shapes/Shape":"shapes/Shape.js","./shapes/Circle":"shapes/Circle.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -39633,7 +39742,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42985" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45129" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
