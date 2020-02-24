@@ -60,7 +60,7 @@ export default {
         Group,
     },
 
-    _metal: {
+    metal: {
         GeneraObject,
         Color,
         Element,

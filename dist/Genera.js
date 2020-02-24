@@ -3644,7 +3644,7 @@ function (_GeneraObject) {
     _classCallCheck(this, Space);
 
     if (queryString === null) {
-      throw new Error("Window must have a query string to mount to an element");
+      throw new Error("must have a query string to mount to an element");
     }
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Space).call(this));
@@ -96944,7 +96944,7 @@ function (_Thing) {
 
     _classCallCheck(this, Shape);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Shape).call(this, x, y, y));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Shape).call(this, x, y, z));
 
     _this.setColor();
 
@@ -97047,7 +97047,8 @@ function (_Shape) {
     _this.radius = r;
     var geom = new _three.CircleGeometry(r, 50);
     var mat = new _three.MeshPhongMaterial(_this.color);
-    _this.thing = new _three.Mesh(geom, mat);
+
+    _this.setMesh(new _three.Mesh(geom, mat));
 
     _this.setPosition(x, y, z);
 
@@ -97133,7 +97134,7 @@ var _default = {
     Collection: _Collection.default,
     Group: _Group.default
   },
-  _metal: {
+  metal: {
     GeneraObject: _GeneraObject.default,
     Color: _Color.default,
     Element: _Element.default,

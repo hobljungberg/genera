@@ -19,8 +19,8 @@ class Circle extends Shape {
 
         const geom = new CircleGeometry(r, 50);
         const mat = new MeshPhongMaterial(this.color);
-        this.thing = new Mesh(geom, mat);
 
+        this.setMesh(new Mesh(geom, mat));
         this.setPosition(x, y, z);
     }
 

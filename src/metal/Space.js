@@ -11,7 +11,7 @@ class Space extends GeneraObject {
 
     constructor(queryString = null, width = 800, height = 600) {
         if (queryString === null) {
-            throw new Error("Window must have a query string to mount to an element") ;
+            throw new Error("must have a query string to mount to an element") ;
         }
 
         super();

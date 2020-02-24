@@ -10,7 +10,7 @@ import Thing from '../metal/Thing';
 class Shape extends Thing {
 
     constructor(x, y, z) {
-        super(x, y, y);
+        super(x, y, z);
 
         this.setColor();
         this.setMesh();
