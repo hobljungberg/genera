@@ -6,7 +6,7 @@
 
 import chroma from 'chroma-js';
 
-import GeneraObject from './GeneraObject';
+import GeneraObject from './GeneraObject.js';
 
 
 class Color extends GeneraObject {

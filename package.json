@@ -3,14 +3,17 @@
   "version": "0.1.0",
   "description": "Generative Art & Design Library",
   "main": "dist/Genera.js",
-  "unpkg": "dist/Genera.js",
+  "unpkg": "dist/Genera.min.js",
   "repository": "https://github.com/hobljungberg/genera",
   "author": "Hob Ljungberg <hob@hobljungberg.com>",
   "license": "MIT",
   "private": false,
+  "type": "module",
   "scripts": {
-    "build": "npx parcel build src/Genera.js",
-    "start": "npx parcel watch src/Genera.js"
+    "build:node": "npx parcel build Genera.js --target node",
+    "build:web": "npx parcel build Genera.js",
+    "build": "yarn run build:node & yarn run build:web",
+    "start": "npx parcel watch Genera.js --target node"
   },
   "dependencies": {
     "chroma-js": "^2.1.0",
@@ -19,6 +22,8 @@
     "uuid": "^3.3.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
     "parcel-bundler": "^1.12.4"
   }
 }

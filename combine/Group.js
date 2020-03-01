@@ -4,7 +4,7 @@
  * Used for grouping Elements together.
  */
 
-import Element from '../metal/Element';
+import Element from '../metal/Element.js';
 
 
 class Group extends Element {

@@ -4,21 +4,23 @@
  * Used for rendering to a Canvas element.
  */
 
-import PixelSpace from './PixelSpace';
+import Color from '../metal/Color.js';
+import PixelSpace from './PixelSpace.js';
 
 
 class CanvasSpace extends PixelSpace {
 
     constructor(queryString, width, height) {
-        super(queryString, width, height);
+        super(width, height);
 
+        this.parent = document.querySelector(queryString);
         this._canvas = document.createElement('canvas');
         this._context = this._canvas.getContext('2d');
         this._pixel = this._context.createImageData(1,1);
 
         this._canvas.setAttribute('width', this.width);
         this._canvas.setAttribute('height', this.height);
-        this.Container.appendChild(this._canvas);
+        this.parent.appendChild(this._canvas);
     }
 
     setPixel(x = 0, y = 0, c = 0x000000) {
@@ -31,3 +33,5 @@ class CanvasSpace extends PixelSpace {
     }
 
 }
+
+export default CanvasSpace;

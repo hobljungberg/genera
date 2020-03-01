@@ -5,7 +5,7 @@
  * rules to permute the RGB field.
  */
 
-import GeneraObject from '../metal/GeneraObject';
+import GeneraObject from '../metal/GeneraObject.js';
 
 
 class ColorSpectrum extends GeneraObject {

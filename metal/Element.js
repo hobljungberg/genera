@@ -4,7 +4,7 @@
  * A renderable object.
  */
 
-import GeneraObject from './GeneraObject';
+import GeneraObject from './GeneraObject.js';
 
 
 class Element extends GeneraObject {

@@ -6,8 +6,8 @@
 
 import { PerspectiveCamera, Scene, WebGLRenderer } from 'three';
 
-import ElementSpace from './ElementSpace';
-import PointLight from '../light/PointLight';
+import ElementSpace from './ElementSpace.js';
+import PointLight from '../light/PointLight.js';
 
 
 class ShapeSpace extends ElementSpace {
@@ -25,7 +25,7 @@ class ShapeSpace extends ElementSpace {
         this.Scene.add(this.Camera);
         this.Renderer.setSize(this.width, this.height);
 
-        this.Container.appendChild(this.Renderer.domElement);
+        this.parent.appendChild(this.Renderer.domElement);
     }
 
     __render() {

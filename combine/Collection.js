@@ -4,7 +4,7 @@
  * Used for encapsulating sets of objects.
  */
 
-import GeneraObject from '../metal/GeneraObject';
+import GeneraObject from '../metal/GeneraObject.js';
 
 
 class Collection extends GeneraObject {

@@ -4,9 +4,9 @@
  * A point light Element.
  */
 
-import * as THREE from 'three';
+import { PointLight as PointLight3 } from 'three';
 
-import Thing from '../metal/Thing';
+import Thing from '../metal/Thing.js';
 
 
 class PointLight extends Thing {
@@ -14,7 +14,7 @@ class PointLight extends Thing {
     constructor(color = 0xffffff, intensity = 1, distance = 0, decay = 1) {
         super();
 
-        this.thing = new THREE.PointLight(color, intensity, distance, decay);
+        this.thing = new PointLight3(color, intensity, distance, decay);
     }
 
     setPosition(x, y, z) {

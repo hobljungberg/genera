@@ -4,7 +4,7 @@
  * Base object for Genera
  */
 
-import uuidv4 from 'uuid/v4';
+import uuidv4 from 'uuid/v4.js';
 
 
 class GeneraObject {

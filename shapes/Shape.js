@@ -4,7 +4,7 @@
  * The base class from drawing meshes.
  */
 
-import Thing from '../metal/Thing';
+import Thing from '../metal/Thing.js';
 
 
 class Shape extends Thing {

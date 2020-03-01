@@ -6,7 +6,7 @@
 
 import { CircleGeometry, Mesh, MeshPhongMaterial } from 'three';
 
-import Shape from './Shape';
+import Shape from './Shape.js';
 
 
 class Circle extends Shape {

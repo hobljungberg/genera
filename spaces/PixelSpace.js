@@ -4,16 +4,20 @@
  * Color by pixel.
  */
 
-import Color from '../metal/Color';
-import ElementSpace from '../metal/Space';
+import Color from '../metal/Color.js';
+import Space from '../metal/Space.js';
 
 
 class PixelSpace extends Space {
 
-    constructor(queryString, width, height) {
-        super(queryString, width, height);
+    constructor(width, height) {
+        super(width, height);
 
         this._pixels = [[]];
+    }
+
+    getPixel(x = 0, y = 0) {
+        return this._pixels[x] && this._pixels[x][y] ? this._pixels[x][y] : undefined;
     }
 
     setColumn(col = 0, color) {

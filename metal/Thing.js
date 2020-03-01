@@ -4,7 +4,7 @@
  * An Element that isn't the thing itself.
  */
 
-import Element from './Element';
+import Element from './Element.js';
 
 
 class Thing extends Element {

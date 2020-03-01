@@ -4,13 +4,14 @@
  * Library for creating generative media in WebGL.
  */
 
-import pkg from '../package';
+import pkg from './package';
 
 // Spaces
-import PixelSpace from './spaces/PixelSpace';
-import ShapeSpace from './spaces/ShapeSpace';
 import CanvasSpace from './spaces/CanvasSpace';
+import ElementSpace from './spaces/ElementSpace';
+import ShapeSpace from './spaces/ShapeSpace';
 import ImageSpace from './spaces/ImageSpace';
+import PixelSpace from './spaces/PixelSpace';
 
 // Combinations
 import Collection from './combine/Collection';
@@ -35,30 +36,37 @@ import Circle from './shapes/Circle';
  * Namespaces
  */
 
-export default {
+export const Combine = {
+    Collection,
+    Group,
+};
+
+export const Light = {
+    ColorSpectrum,
+    PointLight,
+};
+
+export const Shapes = {
+    Shape,
+    Circle,
+};
+
+export const Spaces = {
+    ElementSpace,
+    PixelSpace,
+    CanvasSpace,
+    ImageSpace,
+    ShapeSpace,
+};
+
+
+const Genera = {
     version: pkg.version,
 
-    Spaces: {
-        CanvasSpace,
-        ImageSpace,
-        PixelSpace,
-        ShapeSpace,
-    },
-
-    Light: {
-        ColorSpectrum,
-        PointLight,
-    },
-
-    Shapes: {
-        Shape,
-        Circle,
-    },
-
-    Combinations: {
-        Collection,
-        Group,
-    },
+    Combine,
+    Light,
+    Shapes,
+    Spaces,
 
     metal: {
         GeneraObject,
@@ -67,3 +75,5 @@ export default {
         Thing,
     },
 };
+
+export default Genera;
